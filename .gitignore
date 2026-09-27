@@ -1,0 +1,27 @@
+# --- Secrets & environment (NEVER commit these) ---
+.env
+.env.*
+*.key
+*.pem
+secrets.json
+config.local.*
+
+# --- Dependencies (if you add a build step later) ---
+node_modules/
+
+# --- Build output ---
+dist/
+build/
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+
+# --- Editor / IDE folders ---
+.vscode/
+.idea/
+*.swp
+
+# --- Logs ---
+*.log
+npm-debug.log*

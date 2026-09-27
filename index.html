@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Security: only allow resources from ourselves + Google Fonts. Blocks everything else. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none';
+                 style-src 'self' https://fonts.googleapis.com;
+                 font-src https://fonts.gstatic.com;
+                 script-src 'self';
+                 img-src 'self' data:;
+                 base-uri 'none';
+                 form-action 'none'" />
+
+  <title>The Sniff Test — read the pitch before it reads you</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <span class="filetag">Case File · Pitch Review</span>
+      <h1>The <span class="mark">Sniff</span> Test</h1>
+      <p class="sub">Paste any "make money online" pitch — an AI-agency course, a trading bot, dropshipping, a coaching DM — and see the persuasion tactics marked up in red, plus the questions to ask before you pay a penny. It also looks for quieter scam signs written in calm, professional language.</p>
+    </header>
+
+    <div class="panel">
+      <label class="field-label" for="inp">Paste the sales page, ad, or DM</label>
+      <textarea id="inp" placeholder="Paste the text here. The more of it, the better the read — headlines, testimonials, the bit that asks you to 'book a call' or 'apply now'…"></textarea>
+      <div class="row">
+        <button class="btn-primary" id="btn-run">Run the sniff test</button>
+        <button class="btn-ghost" id="btn-example">Load an example</button>
+        <button class="btn-ghost" id="btn-clear">Clear</button>
+        <button class="btn-ai" id="btn-ai">Get a deeper AI read (free)</button>
+      </div>
+    </div>
+
+    <div id="ai-box" class="panel ai-box hidden">
+      <p class="ai-lead">This button copies a ready-made prompt with your text in it. Paste it into any free AI chat for a second opinion. Nothing is sent from this page; you choose whether to share it and which AI to use.</p>
+      <p id="ai-status" class="ai-status" role="status"></p>
+      <div class="ai-links">
+        <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open ChatGPT ↗</a>
+        <a href="https://claude.ai/new" target="_blank" rel="noopener noreferrer">Open Claude ↗</a>
+        <a href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer">Open Gemini ↗</a>
+      </div>
+      <textarea id="ai-prompt" class="ai-prompt hidden" readonly aria-label="AI prompt to copy"></textarea>
+      <p class="ai-note">AI can be wrong too. Double-check anything important with a Google search and the official regulator.</p>
+    </div>
+
+    <div id="results"></div>
+
+    <footer id="foot" class="hidden"></footer>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

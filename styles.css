@@ -1,0 +1,201 @@
+/* ============================================================
+   The Sniff Test — styles
+   A "case file / red-pen markup" look: warm paper, ink text,
+   one bold red for flags and the verdict stamp.
+   ============================================================ */
+
+/* Design tokens: every colour used in the app, named once here. */
+:root {
+  --paper: #ece9df;       /* page background */
+  --paper-card: #f8f6ef;  /* cards / panels   */
+  --ink: #1b1916;         /* main text        */
+  --ink-soft: #524d44;    /* secondary text   */
+  --line: #cbc6b6;        /* borders          */
+  --red: #c0322a;         /* flags + stamp    */
+  --red-deep: #9a261f;    /* darker red       */
+  --hi: #f2cf3f;          /* highlighter      */
+  --navy: #2c4257;        /* focus / info     */
+  --green: #46714f;       /* "do this" / fair */
+}
+
+/* Reset: strip default browser spacing so our spacing is predictable. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--paper);
+  /* faint dot grid, like graph paper on a desk */
+  background-image: radial-gradient(circle at 1px 1px, rgba(27,25,22,0.04) 1px, transparent 0);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: 'Archivo', system-ui, sans-serif;
+  line-height: 1.55;
+  padding: 28px 18px 80px;
+}
+
+.wrap { max-width: 760px; margin: 0 auto; }  /* centre column, capped width */
+
+/* ---- small reusable labels ---- */
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red-deep);
+}
+.filetag {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1.5px solid var(--ink); border-radius: 2px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 5px 10px; color: var(--ink);
+}
+.filetag::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--red); }
+
+/* ---- header ---- */
+header { border-bottom: 2.5px solid var(--ink); padding-bottom: 22px; margin-bottom: 26px; }
+h1 {
+  font-weight: 900; font-size: clamp(38px, 9vw, 68px);
+  line-height: 0.92; letter-spacing: -0.02em; margin: 16px 0 10px;
+  text-transform: uppercase;
+}
+h1 .mark { background: var(--hi); padding: 0 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.sub { font-size: clamp(15px, 3.6vw, 18px); color: var(--ink-soft); max-width: 52ch; }
+
+/* ---- input panel ---- */
+.panel {
+  background: var(--paper-card);
+  border: 1.5px solid var(--line);
+  border-radius: 4px;
+  padding: 18px 18px 20px;
+  box-shadow: 3px 3px 0 rgba(27,25,22,0.06);
+}
+label.field-label {
+  display: block; font-family:'IBM Plex Mono', monospace;
+  font-size: 12px; letter-spacing:0.12em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 8px;
+}
+textarea {
+  width: 100%; min-height: 150px; resize: vertical;
+  background: #fffefb; border: 1.5px solid var(--line); border-radius: 3px;
+  padding: 13px 14px; font-family: 'Archivo', sans-serif; font-size: 15.5px;
+  color: var(--ink); line-height: 1.5;
+}
+textarea:focus { outline: 2.5px solid var(--navy); outline-offset: 1px; border-color: var(--navy); }
+
+.row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; align-items: center; }
+
+button {
+  font-family: 'IBM Plex Mono', monospace; font-weight: 600;
+  font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+  cursor: pointer; border-radius: 3px; padding: 12px 18px; border: 1.5px solid var(--ink);
+  transition: transform .04s ease;
+}
+button:active { transform: translateY(1px); }   /* tiny press effect */
+.btn-primary { background: var(--red); color: #fff; border-color: var(--red-deep); }
+.btn-primary:hover { background: var(--red-deep); }
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover { background: rgba(27,25,22,0.05); }
+
+/* "deeper AI read" button + the box it opens */
+.btn-ai { background: var(--navy); color: #fff; border-color: var(--navy); margin-left: auto; }
+.btn-ai:hover { background: #1f3040; }
+.ai-box { margin-top: 16px; border-left: 4px solid var(--navy); }
+.ai-lead { font-size: 14.5px; color: var(--ink-soft); }
+.ai-status { font-weight: 700; margin: 10px 0; }
+.ai-status:empty { display: none; }
+.ai-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 12px; }
+.ai-links a {
+  font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+  color: var(--navy); border: 1.5px solid var(--navy); border-radius: 3px; padding: 8px 12px;
+}
+.ai-links a:hover { background: rgba(44,66,87,0.08); }
+textarea.ai-prompt { min-height: 130px; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; }
+.ai-note { font-size: 12.5px; color: var(--ink-soft); margin-top: 8px; font-family: 'IBM Plex Mono', monospace; }
+
+/* ---- results area ---- */
+#results { margin-top: 30px; }
+.hidden { display: none; }
+
+/* verdict banner with the rubber-stamp */
+.verdict {
+  position: relative; border: 2.5px solid var(--ink); border-radius: 4px;
+  background: var(--paper-card); padding: 22px 20px; margin-bottom: 26px; overflow: hidden;
+}
+.verdict h2 { font-size: 13px; font-family:'IBM Plex Mono', monospace; letter-spacing:0.14em; text-transform: uppercase; color: var(--ink-soft); font-weight:600; }
+.verdict .count { font-weight: 900; font-size: clamp(30px, 7vw, 46px); line-height: 1; margin: 8px 0 6px; letter-spacing: -0.01em; }
+.verdict .count b { color: var(--red); }
+.verdict .blurb { color: var(--ink-soft); max-width: 46ch; font-size: 15px; }
+
+/* the striped "pressure" meter */
+.meter { height: 12px; background: #e3dfd2; border:1.5px solid var(--line); border-radius: 20px; margin: 16px 0 4px; overflow: hidden; }
+.meter > i { display:block; height:100%; width:0; transition: width .9s cubic-bezier(.2,.8,.2,1);
+  background: repeating-linear-gradient(45deg, var(--red), var(--red) 7px, var(--red-deep) 7px, var(--red-deep) 14px); }
+
+/* the stamp slams in on result */
+.stamp {
+  position: absolute; top: 14px; right: 12px; transform: rotate(-9deg);
+  border: 3px solid var(--red); color: var(--red);
+  font-family: 'IBM Plex Mono', monospace; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; font-size: 13px;
+  padding: 6px 10px; border-radius: 4px; text-align:center; max-width: 150px;
+  opacity: 0; animation: slam .35s ease-out .5s forwards;
+  box-shadow: inset 0 0 0 1px rgba(192,50,42,0.25);
+}
+@keyframes slam {
+  0%   { opacity:0; transform: rotate(-9deg) scale(2.4); }
+  70%  { opacity:1; transform: rotate(-9deg) scale(.92); }
+  100% { opacity:.92; transform: rotate(-9deg) scale(1); }
+}
+
+/* section dividers */
+.sec-head { font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--red-deep); margin: 30px 0 12px; display:flex; align-items:center; gap:10px; }
+.sec-head::after { content:""; flex:1; height:1.5px; background: var(--line); }
+
+/* a single detected-tactic card */
+.flagcard { background: var(--paper-card); border: 1.5px solid var(--line); border-left: 4px solid var(--red); border-radius: 3px; padding: 14px 16px; margin-bottom: 12px; }
+.flagcard .name { font-weight: 800; font-size: 16px; }
+.flagcard .why { color: var(--ink-soft); font-size: 14.5px; margin-top: 4px; }
+.flagcard .do { font-size: 14px; margin-top: 9px; padding-top: 9px; border-top: 1px dashed var(--line); }
+.flagcard .do b { font-family:'IBM Plex Mono', monospace; font-size: 11px; letter-spacing:0.1em; text-transform:uppercase; color: var(--green); }
+
+/* "quiet" scam signals get a darker edge and a High-risk tag */
+.flagcard.severe { border-left-color: var(--red-deep); background: #fbefec; }
+.flagcard .tag {
+  display: inline-block; vertical-align: 2px; margin-left: 6px;
+  background: var(--red); color: #fff; border-radius: 2px; padding: 2px 6px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* "not 100% reliable" disclaimer under the verdict */
+.notice {
+  background: #fff7d6; border: 1.5px solid var(--hi); border-left: 4px solid #c9a41c;
+  border-radius: 3px; padding: 12px 14px; font-size: 14px; margin: -12px 0 26px;
+}
+
+/* the user's own text, with matches highlighted */
+.marked { background: #fffefb; border:1.5px solid var(--line); border-radius:3px; padding:14px 16px; font-size: 15px; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
+mark.flag { background: rgba(192,50,42,0.16); color: var(--ink); border-bottom: 2px solid var(--red); padding: 0 1px; border-radius: 1px; }
+
+/* "reality" explainer blocks */
+.reality { background: var(--paper-card); border:1.5px solid var(--line); border-radius:4px; padding: 4px 18px 14px; }
+.reality .item { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.reality .item:last-child { border-bottom: none; }
+.reality .item h3 { font-size: 16px; font-weight: 800; }
+.reality .item p { color: var(--ink-soft); font-size: 14.5px; margin-top: 4px; }
+
+/* "questions to ask" list */
+ul.ask { list-style: none; }
+ul.ask li { background: var(--paper-card); border:1.5px solid var(--line); border-radius:3px; padding: 11px 14px 11px 40px; margin-bottom: 9px; position: relative; font-size: 14.5px; }
+ul.ask li::before { content: "?"; position:absolute; left: 12px; top: 10px; width: 20px; height: 20px; border:1.5px solid var(--navy); color: var(--navy); border-radius:50%; font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:12px; display:flex; align-items:center; justify-content:center; }
+
+/* green variant for the fair-minded section */
+.reality.fair { border-left: 4px solid var(--green); }
+
+footer { margin-top: 40px; padding-top: 18px; border-top: 1.5px solid var(--line); font-size: 12.5px; color: var(--ink-soft); font-family:'IBM Plex Mono', monospace; line-height: 1.6; }
+
+/* respect users who ask the OS to reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .stamp { animation: none; opacity: .92; }
+  .meter > i { transition: none; }
+}
