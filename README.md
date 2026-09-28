@@ -86,6 +86,6 @@ MIT — free to use, modify, and share. See [`LICENSE`](LICENSE).
 
 ## Author
 
-Built by **[Your Name]** — [your GitHub profile link].
+Built by **The_Jasper** — [https://the-jasper-foundation.github.io/Sniff-Test/].
 
 _This tool flags persuasion patterns to encourage critical thinking. A flag is not proof that any company is dishonest or unlawful. Always do your own research._
