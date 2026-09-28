@@ -10,11 +10,9 @@ Paste in the text of a sales page or ad, and the app marks up the manipulative p
 
 ## Live demo
 
-👉 _Add your GitHub Pages link here once you deploy (see "Deploy" below)._
+**[Try it here](https://the-jasper-foundation.github.io/Sniff-Test/)**
 
 ## Screenshot
-
-_Add a screenshot here: take one, save it as `screenshot.png` in this folder, then the line below will show it._
 
 ![The Sniff Test screenshot](screenshot.png)
 
